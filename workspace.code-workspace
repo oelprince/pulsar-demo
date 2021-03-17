@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "producer"
+		},
+		{
+			"name": "consumer",
+			"path": "consumer"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}

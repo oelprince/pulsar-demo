@@ -1,0 +1,21 @@
+display:
+  mach: 3
+  unit:
+    name: "mph"
+    factor: 2.23694
+
+
+# DEV Profile
+"%dev":
+  quarkus:
+    message: development
+    pulsar: 
+      url: pulsar://127.0.0.1:57941
+
+# prod profile
+quarkus: 
+    message: prod
+    pulsar: 
+      url: pulsar://127.0.0.1:57941
+    http:
+      port: 9090
