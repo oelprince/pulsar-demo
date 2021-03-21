@@ -10,12 +10,12 @@ display:
   quarkus:
     message: development
     pulsar: 
-      url: pulsar://127.0.0.1:57941
+      url: pulsar://127.0.0.1:55001
 
 # prod profile
 quarkus: 
     message: prod
     pulsar: 
-      url: pulsar://127.0.0.1:57941
+      url: pulsar://127.0.0.1:55001
     http:
       port: 9090

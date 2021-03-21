@@ -1,5 +1,7 @@
 package com.oelprince.pulsar;
 
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -9,9 +11,11 @@ import org.apache.pulsar.client.api.PulsarClientException;
 import org.apache.pulsar.client.api.Schema;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+
 @ApplicationScoped
 public class ProducerService {
     
+    private static Logger log = Logger.getLogger(ProducerService.class.getName());
 
     @ConfigProperty(name = "quarkus.pulsar.url")
     private String pulsarUrl;
@@ -23,6 +27,7 @@ public class ProducerService {
     @PostConstruct
     public void init() {
         try {
+            log.info("init producer.");
             pulsarClient = PulsarClient.builder()
             .serviceUrl(pulsarUrl)
             .build();
@@ -30,8 +35,7 @@ public class ProducerService {
             stringProducer = pulsarClient.newProducer(Schema.STRING)
             .topic("my-topic")
             .create();
-            
-            //stringProducer.send("My message");
+
         } catch (PulsarClientException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -39,6 +43,7 @@ public class ProducerService {
     }
 
     public void sendMessage(String message) throws PulsarClientException {
+        log.info("sending message to consumers ...");
         stringProducer.send(message);
     }
 
